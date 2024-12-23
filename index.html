@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f8fafc">
+    <title>DiTSE - Demo Page</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+        font-family: "Computer Modern Sans", sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-white dark:bg-gray-900">
+    <div class="container mx-auto px-4 py-8 sm:px-2 sm:py-4">
+        <p><i class="fa-solid fa-house"></i> <a href="http://hguimaraes.me/">return to home</a></p>
+        <header class="text-center mb-8">
+            <h1 class="text-3xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-4">DiTSE</h1>
+            <p class="text-lg sm:text-base font-bold text-gray-600 dark:text-gray-300">High-Fidelity Generative Speech Enhancement via Latent Diffusion Transformers</p>
+            <p class="text-lg sm:text-base text-gray-600 dark:text-gray-300">Heitor R. Guimarães<sup>1,2</sup>, Jiaqi Su<sup>1</sup>, Rithesh Kumar<sup>1</sup>, Tiago H. Falk<sup>2</sup>, Zeyu Jin<sup>1</sup></p>
+            <p class="text-lg sm:text-base text-gray-600 dark:text-gray-300"><sup>1</sup> Adobe Research, <sup>2</sup> Université du Québec (INRS-EMT)</p>
+        </header>
+
+        <div class="h-px bg-gray-900 dark:bg-gray-600 mb-4"></div>
+        <div class="container mx-auto px-4 py-8">
+            <!-- Flex Container to Split Content -->
+            <div class="flex flex-col md:flex-row items-center md:items-start gap-8">
+                <!-- Text Section -->
+                <div class="w-full md:w-3/5">
+                    <p class="text-lg sm:text-base text-gray-900 dark:text-gray-300 leading-relaxed">
+                        <b>Abstract</b>: Real-world speech recordings frequently suffer from degradations such as background noise and reverberation. 
+                        Speech enhancement aims to mitigate these issues by generating clean high-fidelity signals. While recent generative approaches
+                        for speech enhancement have shown promising results, they still face two major challenges: (1) content hallucination, 
+                        where plausible phonemes generated differ from the original utterance; and (2) inconsistency, failing to preserve speaker's 
+                        identity and prosodic cues from the input speech. In this work, we introduce <b>DiTSE</b> (Diffusion Transformer for Speech 
+                        Enhancement), a system that addresses quality issues of degraded speech at full bandwidth. Our approach employs a score-based
+                        model operating in the latent space of a neural codec, effectively addressing these challenges while remaining computationally 
+                        efficient. Experimental results from both subjective and objective evaluations demonstrate that DiTSE produces high-quality 
+                        speech samples while preserving speaker identity. Furthermore, DiTSE significantly enhances content fidelity and reduces 
+                        hallucinations, achieving a word error rate (WER) reduction of up to 41% compared to state-of-the-art models.
+                    </p>
+                </div>
+        
+                <!-- Image Section -->
+                <div class="w-full md:w-2/5">
+                    <img src="assets/imgs/ditse_arch.png" alt="DiTSE Architecture">
+                </div>
+            </div>
+        </div>
+
+        <div class="h-px bg-gray-900 dark:bg-gray-600 mb-4"></div>
+        <p class="text-lg sm:text-base text-gray-900 dark:text-gray-300">For more details, read our <a href="http://hguimaraes.me/" style="color: blue;">paper on arxiv.</a></p>
+        <br>
+
+        <h1 class="text-3xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-4">Examples</h1>
+        <!-- Dataset 1: DAPS -->
+        <div class="dataset-container">
+            <div class="p-4">
+                <h2 class="text-xl sm:text-lg font-bold text-gray-800 dark:text-gray-100 mb-4">Samples from datasets discussed in our paper</h2>
+                
+                <!-- Scrollable table for larger screens -->
+                <div class="hidden md:block overflow-x-auto">
+                    <table class="examples-table">
+                        <thead>
+                            <tr>
+                                <th class="method-name-cell text-left text-gray-700 dark:text-gray-200"><b>Method</b></th>
+                                <th class="example-cell text-center text-gray-700 dark:text-gray-200">DAPS (48 kHz)</th>
+                                <th class="example-cell text-center text-gray-700 dark:text-gray-200">DEMO (16 kHz)</th>
+                                <th class="example-cell text-center text-gray-700 dark:text-gray-200">AQECC (16 kHz)</th>
+                                <th class="example-cell text-center text-gray-700 dark:text-gray-200">VBDMD (48 kHz)</th>
+                                <th class="example-cell text-center text-gray-700 dark:text-gray-200">EARS (48 kHz)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                            <!-- Noisy Input -->
+                            <tr>
+                                <td class="method-name-cell text-gray-800 dark:text-gray-200">Noisy Input</td>
+                                <td class="example-cell"><audio controls><source src="assets/audio/daps/daps-mos_input-44k_m10-script5-ipad-balcony1-00022.wav" type="audio/wav"></audio></td>
+                                <td class="example-cell"><audio controls><source src="assets/audio/demo/DEMO_input-16k_universe-validation-0067.wav" type="audio/wav"></audio></td>
+                                <td class="example-cell"><audio controls><source src="assets/audio/aqecc/AQECC_input-16k_f91-id10282-s4X9cwCCnFo-00006.wav" type="audio/wav"></audio></td>
+                                <td class="example-cell"><audio controls><source src="assets/audio/vbdmd/voicebank-demand_input-48k_p364-160.wav" type="audio/wav"></audio></td>
+                                <td class="example-cell"><audio controls><source src="assets/audio/ears/EARS_input-48k_p030-09810--1.wav" type="audio/wav"></audio></td>
+                            </tr>
+                            
+                            <!-- HiFi-GAN-2 -->
+                            <tr>
+                                <td class="method-name-cell text-gray-800 dark:text-gray-200">HiFi-GAN-2</td>
+                                <td class="example-cell"><audio controls><source src="assets/audio/daps/daps-mos_hifigan2-44k_m10-script5-ipad-balcony1-00022.wav" type="audio/wav"></audio></td>
+                                <td class="example-cell"><audio controls><source src="assets/audio/demo/DEMO_hifigan2-16k_universe-validation-0067.wav" type="audio/wav"></audio></td>
+                                <td class="example-cell"><audio controls><source src="assets/audio/aqecc/AQECC_hifigan2-16k_f91-id10282-s4X9cwCCnFo-00006.wav" type="audio/wav"></audio></td>
+                                <td class="example-cell"><audio controls><source src="assets/audio/vbdmd/voicebank-demand_hifigan2-48k_p364-160.wav" type="audio/wav"></audio></td>
+                                <td class="example-cell"><audio controls><source src="assets/audio/ears/EARS_hifigan2-48k_p030-09810--1.wav" type="audio/wav"></audio></td>
+                            </tr>
+                            
+                            <!-- SGMSE+ -->
+                            <tr>
+                                <td class="method-name-cell text-gray-800 dark:text-gray-200">SGMSE+</td>
+                                <td class="example-cell"><audio controls><source src="assets/audio/daps/daps-mos_sgmseplus-48k_m10-script5-ipad-balcony1-00022.wav" type="audio/wav"></audio></td>
+                                <td class="example-cell"><audio controls><source src="assets/audio/demo/DEMO_sgmseplus-16k_universe-validation-0067.wav" type="audio/wav"></audio></td>
+                                <td class="example-cell"><audio controls><source src="assets/audio/aqecc/AQECC_sgmseplus-16k_f91-id10282-s4X9cwCCnFo-00006.wav" type="audio/wav"></audio></td>
+                                <td class="example-cell"><audio controls><source src="assets/audio/vbdmd/voicebank-demand_sgmseplus-48k_p364-160.wav" type="audio/wav"></audio></td>
+                                <td class="example-cell"><audio controls><source src="assets/audio/ears/EARS_sgmseplus-48k_p030-09810--1.wav" type="audio/wav"></audio></td>
+                            </tr>
+                            
+                            <!-- Genhancer -->
+                            <tr>
+                                <td class="method-name-cell text-gray-800 dark:text-gray-200">Genhancer</td>
+                                <td class="example-cell"><audio controls><source src="assets/audio/daps/daps-mos_genhancer-44k_m10-script5-ipad-balcony1-00022.wav" type="audio/wav"></audio></td>
+                                <td class="example-cell"><audio controls><source src="assets/audio/demo/DEMO_genhancer-16k_universe-validation-0067.wav" type="audio/wav"></audio></td>
+                                <td class="example-cell"><audio controls><source src="assets/audio/aqecc/AQECC_genhancer-16k_f91-id10282-s4X9cwCCnFo-00006.wav" type="audio/wav"></audio></td>
+                                <td class="example-cell"><audio controls><source src="assets/audio/vbdmd/voicebank-demand_genhancer-44k_p364-160.wav" type="audio/wav"></audio></td>
+                                <td class="example-cell"><audio controls><source src="assets/audio/ears/EARS_genhancer-44k_p030-09810--1.wav" type="audio/wav"></audio></td>
+                            </tr>
+                            
+                            <!-- DiTSE - Tiny -->
+                            <tr>
+                                <td class="method-name-cell text-gray-800 dark:text-gray-200"><b>(Ours)</b> DiTSE <span style="font-size: 0.85em;">[Tiny]</span></td>
+                                <td class="example-cell"><audio controls><source src="assets/audio/daps/daps-mos_ditse-tiny-48k_m10-script5-ipad-balcony1-00022.wav" type="audio/wav"></audio></td>
+                                <td class="example-cell"><audio controls><source src="assets/audio/demo/DEMO_ditse-tiny-16k_universe-validation-0067.wav" type="audio/wav"></audio></td>
+                                <td class="example-cell"><audio controls><source src="assets/audio/aqecc/AQECC_ditse-tiny-16k_f91-id10282-s4X9cwCCnFo-00006.wav" type="audio/wav"></audio></td>
+                                <td class="example-cell"><audio controls><source src="assets/audio/vbdmd/voicebank-demand_ditse-tiny-48k_p364-160.wav" type="audio/wav"></audio></td>
+                                <td class="example-cell"><audio controls><source src="assets/audio/ears/EARS_ditse-tiny-48k_p030-09810--1.wav" type="audio/wav"></audio></td>
+                            </tr>
+                            
+                            <!-- DiTSE - Base [DAC-VAE] -->
+                            <tr>
+                                <td class="method-name-cell text-gray-800 dark:text-gray-200"><b>(Ours)</b> DiTSE <span style="font-size: 0.85em;">[DAC-VAE]</span></td>
+                                <td class="example-cell"><audio controls><source src="assets/audio/daps/daps-mos_ditse-base-48k_m10-script5-ipad-balcony1-00022.wav" type="audio/wav"></audio></td>
+                                <td class="example-cell"><audio controls><source src="assets/audio/demo/DEMO_ditse-base-16k_universe-validation-0067.wav" type="audio/wav"></audio></td>
+                                <td class="example-cell"><audio controls><source src="assets/audio/aqecc/AQECC_ditse-base-16k_f91-id10282-s4X9cwCCnFo-00006.wav" type="audio/wav"></audio></td>
+                                <td class="example-cell"><audio controls><source src="assets/audio/vbdmd/voicebank-demand_ditse-base-48k_p364-160.wav" type="audio/wav"></audio></td>
+                                <td class="example-cell"><audio controls><source src="assets/audio/ears/EARS_ditse-base-48k_p030-09810--1.wav" type="audio/wav"></audio></td>
+                            </tr>
+
+                            <!-- DiTSE - Base [DAC-RVQ] -->
+                            <tr>
+                                <td class="method-name-cell text-gray-800 dark:text-gray-200"><b>(Ours)</b> DiTSE <span style="font-size: 0.85em;">[DAC-RVQ]</span></td>
+                                <td class="example-cell"><audio controls><source src="assets/audio/daps/daps-mos_ditse-base-dac-44k_m10-script5-ipad-balcony1-00022.wav" type="audio/wav"></audio></td>
+                                <td class="example-cell"><audio controls><source src="assets/audio/demo/DEMO_ditse-base-dac-16k_universe-validation-0067.wav" type="audio/wav"></audio></td>
+                                <td class="example-cell"><audio controls><source src="assets/audio/aqecc/AQECC_ditse-base-dac-16k_f91-id10282-s4X9cwCCnFo-00006.wav" type="audio/wav"></audio></td>
+                                <td class="example-cell"><audio controls><source src="assets/audio/vbdmd/voicebank-demand_ditse-base-dac-44k_p364-160.wav" type="audio/wav"></audio></td>
+                                <td class="example-cell"><audio controls><source src="assets/audio/ears/EARS_ditse-base-dac-44k_p030-09810--1.wav" type="audio/wav"></audio></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Stacked layout for mobile screens -->
+                <!-- <div class="block md:hidden">
+                    <div class="dataset-card mb-4 p-4 bg-white dark:bg-gray-800 rounded shadow">
+                        <h3 class="text-lg sm:text-base font-bold text-gray-800 dark:text-gray-200">
+                            (Ours) DiTSE-<span style="font-size: 0.85em;">Base RVQ</span>
+                        </h3>
+                        <audio controls>
+                            <source src="/api/placeholder/audio" type="audio/wav">
+                        </audio>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+
+        <h2 class="text-2xl sm:text-xl font-bold text-gray-900 dark:text-white mb-4">Comparison with original reported methods</h2>
+
+        <h2 class="text-2xl sm:text-xl font-bold text-gray-900 dark:text-white mb-4">Real-world speech</h2>
+
+
+        <h1 class="text-3xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-4">Test sets download</h1>
+        <p class="text-lg sm:text-base text-gray-900 dark:text-gray-300">To foster collaboration and comparisons, we release the entire evaluation sets in the following repository: <a href="http://hguimaraes.me/" style="color: blue;">[URL]</a></p> 
+    </div>
+</body>
+</html>
