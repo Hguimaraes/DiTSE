@@ -32,16 +32,20 @@
                 <!-- Text Section -->
                 <div class="w-full md:w-3/5">
                     <p class="text-lg sm:text-base text-gray-900 leading-relaxed">
-                        <b>Abstract</b>: Real-world speech recordings frequently suffer from degradations such as background noise and reverberation. 
-                        Speech enhancement aims to mitigate these issues by generating clean high-fidelity signals. While recent generative approaches
-                        for speech enhancement have shown promising results, they still face two major challenges: (1) content hallucination, 
-                        where plausible phonemes generated differ from the original utterance; and (2) inconsistency, failing to preserve speaker's 
-                        identity and prosodic cues from the input speech. In this work, we introduce <b>DiTSE</b> (Diffusion Transformer for Speech 
-                        Enhancement), a system that addresses quality issues of degraded speech at full bandwidth. Our approach employs a score-based
-                        model operating in the latent space of a neural codec, effectively addressing these challenges while remaining computationally 
-                        efficient. Experimental results from both subjective and objective evaluations demonstrate that DiTSE produces high-quality 
-                        speech samples while preserving speaker identity. Furthermore, DiTSE significantly enhances content fidelity and reduces 
-                        hallucinations, achieving a word error rate (WER) reduction of up to 41% compared to state-of-the-art models.
+                        <b>Abstract</b>: Real-world speech recordings frequently suffer from degradations 
+                        such as background noise and reverberation. Speech enhancement aims to mitigate these 
+                        issues by generating clean high-fidelity signals. While recent generative approaches for 
+                        speech enhancement have shown promising results, they still face two major challenges: 
+                        (1) content hallucination, where plausible phonemes generated differ from the original  
+                        utterance; and (2) inconsistency, failing to preserve speaker's identity and prosodic 
+                        cues from the input speech. In this work, we introduce <b>DiTSE</b> (Diffusion 
+                        Transformer for Speech Enhancement), which addresses quality issues of degraded speech 
+                        at full bandwidth. Our approach employs a latent diffusion model together with robust 
+                        conditioning features, effectively addressing these challenges while remaining 
+                        computationally efficient. Experimental results from both subjective and objective evaluations 
+                        demonstrate that DiTSE produces studio-quality audio while preserving speaker identity. 
+                        Furthermore, DiTSE significantly improves content fidelity and alleviates hallucinations, 
+                        reducing the word error rate (WER) across datasets compared to state-of-the-art enhancers.
                     </p>
                 </div>
         
@@ -128,7 +132,7 @@
                             
                             <!-- DiTSE - Base [DAC-VAE] -->
                             <tr>
-                                <td class="method-name-cell text-gray-800"><b>(Ours)</b> DiTSE <span style="font-size: 0.85em;">[DAC-VAE]</span></td>
+                                <td class="method-name-cell text-gray-800"><b>(Ours)</b> DiTSE <span style="font-size: 0.85em;">[Base]</span></td>
                                 <td class="example-cell"><audio controls><source src="assets/audio/daps/daps-mos_ditse-base-48k_m10-script5-ipad-balcony1-00022.wav" type="audio/wav"></audio></td>
                                 <td class="example-cell"><audio controls><source src="assets/audio/demo/DEMO_ditse-base-16k_universe-validation-0067.wav" type="audio/wav"></audio></td>
                                 <td class="example-cell"><audio controls><source src="assets/audio/aqecc/AQECC_ditse-base-16k_f91-id10282-s4X9cwCCnFo-00006.wav" type="audio/wav"></audio></td>
@@ -138,7 +142,7 @@
 
                             <!-- DiTSE - Base [DAC-RVQ] -->
                             <tr>
-                                <td class="method-name-cell text-gray-800"><b>(Ours)</b> DiTSE <span style="font-size: 0.85em;">[DAC-RVQ]</span></td>
+                                <td class="method-name-cell text-gray-800"><b>(Ours)</b> DiTSE <span style="font-size: 0.85em;">[Base + Post]</span></td>
                                 <td class="example-cell"><audio controls><source src="assets/audio/daps/daps-mos_ditse-base-dac-44k_m10-script5-ipad-balcony1-00022.wav" type="audio/wav"></audio></td>
                                 <td class="example-cell"><audio controls><source src="assets/audio/demo/DEMO_ditse-base-dac-16k_universe-validation-0067.wav" type="audio/wav"></audio></td>
                                 <td class="example-cell"><audio controls><source src="assets/audio/aqecc/AQECC_ditse-base-dac-16k_f91-id10282-s4X9cwCCnFo-00006.wav" type="audio/wav"></audio></td>
